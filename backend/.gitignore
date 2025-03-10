@@ -1,0 +1,13 @@
+# env files (can opt-in for committing if needed)
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/dist
+prisma/migrations/
+
+# production
+.env*.local
+.env
+tsconfig.tsbuildinfo
+package-lock.json

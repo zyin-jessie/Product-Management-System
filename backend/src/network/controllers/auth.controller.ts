@@ -37,7 +37,7 @@ class AuthController extends Controller {
                     name,
                     email,
                     password: hashedPassword,
-                    role: "student"
+                    role: "employee"
                 }
             })
             response.status(200).json({

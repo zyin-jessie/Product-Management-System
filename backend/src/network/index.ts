@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 const port = process.env.BACKEND_PORT || 4000;
 
-app.use("/", authRouter);
+app.use("/api", authRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on ${kleur.white().bold(`http://127.0.0.1:${port}`)}`);

@@ -76,6 +76,7 @@
 }
 
 @theme inline {
+  --color-danger: #DC3545;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -142,5 +143,10 @@
 }
 
 @layer components {
-    
+    .error-input {
+        @apply border-2 border-danger focus:outline-none;
+    }
+    .error-text {
+        @apply text-danger text-sm;
+    }
 }

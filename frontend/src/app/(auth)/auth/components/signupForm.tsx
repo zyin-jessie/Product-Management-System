@@ -6,15 +6,18 @@ import { useFormik } from 'formik'
 import { useState } from 'react'
 import axios from '@/lib/axios'
 import { Button } from '@/components/ui/button'
+import { signUpSchema } from '@/lib/validationSchema'
 
 const signupForm = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const { values, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
         initialValues: {
             name: '',
             email: '',
             password: ''
-        }, onSubmit: async (values, { resetForm } : { resetForm: () => void }) => {
+        },
+        validationSchema: signUpSchema,
+        onSubmit: async (values, { resetForm } : { resetForm: () => void }) => {
             console.log(values)
             resetForm()
             setIsLoading(true)
@@ -42,29 +45,17 @@ const signupForm = () => {
 
                 <form method="POST" onSubmit={handleSubmit}>
                     <div className='flex flex-col gap-y-2'>
-                        <input type="text"
-                        className='text-field'
-                        placeholder='Username'
-                        name="name"
-                        value={values.name}
-                        onChange={handleChange}/>
+                        <input type="text" className={`text-field ${errors.name && touched.name ? "error-input" : ""}`} placeholder='Full Name' name="name" value={values.name} onBlur={handleBlur} onChange={handleChange}/>
+                        {errors.name && touched.name && <p className='error-text'>{errors.name}</p>}
 
-                        <input type="text"
-                        className='text-field'
-                        placeholder='Email'
-                        name="email"
-                        value={values.email}
-                        onChange={handleChange} />
+                        <input type="text" className={`text-field ${errors.email && touched.email ? "error-input" : ""}`} placeholder='Email' name="email" value={values.email} onBlur={handleBlur} onChange={handleChange} />
+                        {errors.email && touched.email && <p className='error-text'>{errors.email}</p>}
 
-                        <input type="text"
-                        className='text-field'
-                        placeholder='Password'
-                        name="password"
-                        value={values.password}
-                        onChange={handleChange} />
+                        <input type="password" className={`text-field ${errors.password && touched.password ? "error-input" : ""}`} placeholder='Password' name="password" value={values.password} onBlur={handleBlur} onChange={handleChange} />
+                        {errors.password && touched.password && <p className='error-text'>{errors.password}</p>}
                     </div>
 
-                    <Button className='submit-btn mt-2' disabled={isLoading as boolean}>Signup</Button>
+                    <Button type='submit' className='submit-btn mt-2' disabled={isLoading as boolean}>Signup</Button>
 
                 </form>
             </div>

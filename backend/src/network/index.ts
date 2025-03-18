@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response } from "express"
 import kleur from "kleur"
 import authRouter from "./routes/auth.route"
 import cors from "@/middleware/cors"
@@ -14,6 +14,9 @@ app.use(cookieParser());
 const port = process.env.BACKEND_PORT || 4000;
 
 app.use("/api", authRouter);
+app.get("/", (request: Request, response: Response) => {
+    response.json({ Message: "Product Management System" });
+})
 
 app.listen(port, () => {
     console.log(`Server is running on ${kleur.white().bold(`http://127.0.0.1:${port}`)}`);

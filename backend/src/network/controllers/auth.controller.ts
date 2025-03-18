@@ -96,11 +96,6 @@ class AuthController extends Controller {
     public SessionLogout = (request: Request, response: Response) => {
 
     };
-
-    public start = (request: Request, response: Response) => {
-        response.json({ Message: "Product Management System" });
-    };
-
 }
 
 export default new AuthController;

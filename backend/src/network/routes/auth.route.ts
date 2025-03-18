@@ -8,6 +8,4 @@ router.get("/session-token", authController.SessionToken);
 router.get("/session-logout", authController.SessionLogout);
 router.post("/signup", authValidation.SignupSchema, authController.Signup);
 router.post("/login", authValidation.LoginSchema, authController.Login);
-router.get("/", authController.start);
-
 export default router;

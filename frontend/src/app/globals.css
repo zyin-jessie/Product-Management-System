@@ -122,12 +122,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  .text-field {
-    display: block;
-    width: 100%;
-    padding: 0.5rem 1.25rem;
-    @apply rounded-md border-0 shadow-sm;
-  }
   .submit-btn {
     width: 100%;
     color: white;
@@ -148,5 +142,11 @@
     }
     .error-text {
         @apply text-danger text-sm;
+    }
+    .text-field {
+        display: block;
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        @apply rounded-md border-0 shadow-sm;
     }
 }
